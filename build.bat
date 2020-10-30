@@ -1,0 +1,1 @@
+pyinstaller --onefile --noupx --icon=icon.ico --name AutoFisher .\src\autofisher.py
