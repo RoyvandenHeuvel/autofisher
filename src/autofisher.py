@@ -29,11 +29,14 @@ def prompt_experience_bar():
 
     bottomRight: Point = prompt_corner_position('bottom-right', F3)
 
+    while keyboard.is_pressed(F3):
+        sleep(0.01)
+
     return (topLeft.x, topLeft.y, bottomRight.x, bottomRight.y)
 
 def verify_selection(selected_box, confirm_key_name, reselect_key_name):
-    image = grab(selected_box)
-    image.show()
+    # image = grab(selected_box)
+    # image.show()
 
     print(f'Is this your experience bar? Press {confirm_key_name} to confirm, press {reselect_key_name} to make a new selection.')
     while True:
