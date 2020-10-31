@@ -19,12 +19,18 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - name: Setup Python
+        uses: actions/setup-python@v2.1.4
+        with:
+          # Version range or exact version of a Python version to use, using SemVer's version range syntax.
+          python-version: 3.9 # optional, default is 3.x
+
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
       # Runs a single command using the runners shell
       - name: Build app
-        run: start-process "cmd.exe" "build.bat"
+        run: pyinstaller --onefile --noupx --icon=icon.ico --name AutoFisher .\src\autofisher.py
         working-directory: $GITHUB_WORKSPACE
         
       - name: Upload a Build Artifact
