@@ -1,13 +1,12 @@
+from multiprocessing import Process, freeze_support
 from time import sleep
 
-import mouse
 import keyboard
+import mouse
 from PIL import ImageChops
 from pyautogui import Point, position
 from pyscreenshot import grab
 from win32con import VK_ESCAPE
-
-from multiprocessing import Process, freeze_support
 
 F3 = 'f3'
 F4 = 'f4'
@@ -38,6 +37,7 @@ def verify_selection(selected_box, confirm_key_name, reselect_key_name):
     # image = grab(selected_box)
     # image.show()
 
+    print(f'Selected area: {selected_box}')
     print(f'Is this your experience bar? Press {confirm_key_name} to confirm, press {reselect_key_name} to make a new selection.')
     while True:
         if keyboard.is_pressed(confirm_key_name):
@@ -58,7 +58,7 @@ def main():
     pollsBetweenClickGap: int = 5
     clicked = False
     pollsSinceClick: int = 0
-    maxPollsSinceLastClick: int = 45
+    maxPollsSinceLastClick: int = 75
 
     print(f'Hold {F4} to pause the program, {F3} to unpause the program, and CTRL+C to stop the program.')
 
