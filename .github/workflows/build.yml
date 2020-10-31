@@ -24,7 +24,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Build app
-        run: start-process "cmd.exe" "build.bat"
+        run: pyinstaller --onefile --noupx --icon=icon.ico --name AutoFisher .\src\autofisher.py
         working-directory: $GITHUB_WORKSPACE
         
       - name: Upload a Build Artifact
